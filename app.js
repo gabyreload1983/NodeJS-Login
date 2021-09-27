@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 
@@ -8,6 +9,7 @@ app.use(express.static("public"));
 
 // view engine
 app.set("view engine", "ejs");
+app.use(express.json());
 
 // database connection
 const dbURI =
@@ -24,3 +26,4 @@ mongoose
 // routes
 app.get("/", (req, res) => res.render("home"));
 app.get("/smoothies", (req, res) => res.render("smoothies"));
+app.use(authRoutes);
