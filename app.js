@@ -20,7 +20,10 @@ mongoose
     useUnifiedTopology: true,
     useCreateIndex: true,
   })
-  .then((result) => app.listen(3000))
+  .then((result) => {
+    console.log("Connected to mongoDB...");
+    app.listen(3000);
+  })
   .catch((err) => console.log(err));
 
 // routes
