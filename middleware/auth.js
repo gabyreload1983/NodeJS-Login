@@ -1,16 +1,18 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const config = require("config");
+
+const jwtPrivateKey = config.get("jwtPrivateKey");
 
 const requireAuth = (req, res, next) => {
   const token = req.cookies.jwt;
 
   if (token) {
-    jwt.verify(token, "reload secret", (err, decodedToken) => {
+    jwt.verify(token, jwtPrivateKey, (err, decodedToken) => {
       if (err) {
         console.log(err.message);
         res.redirect("/login");
       } else {
-        console.log(decodedToken);
         next();
       }
     });
@@ -24,13 +26,12 @@ const checkUser = (req, res, next) => {
   const token = req.cookies.jwt;
 
   if (token) {
-    jwt.verify(token, "reload secret", async (err, decodedToken) => {
+    jwt.verify(token, jwtPrivateKey, async (err, decodedToken) => {
       if (err) {
         console.log(err.message);
         res.locals.user = null;
         next();
       } else {
-        console.log(decodedToken);
         let user = await User.findById(decodedToken.id);
         res.locals.user = user;
         next();
