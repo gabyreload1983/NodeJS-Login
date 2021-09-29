@@ -48,3 +48,6 @@ app.get("*", checkUser);
 app.get("/", (req, res) => res.render("home"));
 app.get("/gallery", requireAuth, (req, res) => res.render("gallery"));
 app.use(authRoutes);
+
+// Production
+require("./prod")(app);
