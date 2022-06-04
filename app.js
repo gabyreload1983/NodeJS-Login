@@ -23,7 +23,7 @@ if (!config.get("db")) {
 }
 
 const db = config.get("db");
-const dbURI = `mongodb+srv://reload:${db}@cluster0.4hbz9.mongodb.net/node-auth`;
+const dbURI = `mongodb+srv://${db}@cluster0.4hbz9.mongodb.net/node-auth`;
 mongoose
   .connect(dbURI, {
     useNewUrlParser: true,

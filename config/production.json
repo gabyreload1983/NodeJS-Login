@@ -1,0 +1,4 @@
+{
+  "jwtPrivateKey": "login_jwtPrivateKey",
+  "db": "login_db"
+}
