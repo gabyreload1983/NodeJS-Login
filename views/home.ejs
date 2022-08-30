@@ -1,14 +1,22 @@
-<%- include('partials/header'); -%>
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head'); -%>
+  <body>
+    <%- include('partials/header'); -%>
+    <main>
+      <div class="container-fluid">
+        <div class="d-flex flex-column align-items-center pt-5">
+          <img
+            src="/images/Linux-Pinguino.svg"
+            alt=""
+            class="mb-3 images-home"
+            width="200"
+          />
+          <a href="/gallery" class="btn btn-primary">View Pictures</a>
+        </div>
+      </div>
+    </main>
 
-<header>
-  <div class="smoothie">
-    <img src="/Linux-Pinguino.svg" alt="" />
-  </div>
-  <div class="headings">
-    <h2>Galery of pictures Linux</h2>
-    <h3>Reload Inc.</h3>
-    <a href="/gallery" class="btn">View Pictures</a>
-  </div>
-</header>
-
-<%- include('partials/footer'); -%>
+    <%- include('partials/footer'); -%>
+  </body>
+</html>

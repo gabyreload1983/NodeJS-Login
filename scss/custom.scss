@@ -1,0 +1,25 @@
+$primary: #9e9e2e;
+$secondary: #a8a8e6;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+@keyframes images-effect {
+  0% {
+    transform: translateX(-1000px);
+  }
+
+  25% {
+    transform: translateX(100px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+.images-home {
+  animation-name: images-effect;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  animation-duration: 0.9s;
+}

@@ -13,12 +13,19 @@
     "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.23",
+    "node-sass": "^7.0.1",
     "validator": "^13.6.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "global": "^4.4.0",
+    "nodemon": "^2.0.19"
+  },
   "scripts": {
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "nodemon app.js",
+    "build-sass": "node-sass --include-path scss scss/custom.scss ./public/css/main.css",
+    "watch-sass": "nodemon -e scss -x \"npm run build-sass\""
   },
   "engines": {
     "node": "14.17.6"
