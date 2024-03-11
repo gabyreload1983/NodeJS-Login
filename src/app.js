@@ -1,8 +1,8 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const authRoutes = require("./routes/authRoutes");
-const cookieParser = require("cookie-parser");
-const { requireAuth, checkUser } = require("./middleware/auth");
+import express from "express";
+import mongoose from "mongoose";
+import authRoutes from "../routes/authRoutes.js";
+import cookieParser from "cookie-parser";
+import { requireAuth, checkUser } from "../middleware/auth.js";
 
 const app = express();
 
@@ -48,4 +48,4 @@ app.get("/gallery", requireAuth, (req, res) => res.render("gallery"));
 app.use(authRoutes);
 
 // Production
-require("./prod")(app);
+import "../prod.js";

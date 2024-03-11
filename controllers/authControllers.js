@@ -1,5 +1,5 @@
-const User = require("../models/User");
-const jwt = require("jsonwebtoken");
+import User from "../models/User.js";
+import jwt from "jsonwebtoken";
 
 //handle errors
 const handleErrors = (err) => {
@@ -40,15 +40,15 @@ const createToken = (id) => {
   });
 };
 
-module.exports.signup_get = (req, res) => {
+export const signup_get = (req, res) => {
   res.render("signup");
 };
 
-module.exports.login_get = (req, res) => {
+export const login_get = (req, res) => {
   res.render("login");
 };
 
-module.exports.signup_post = async (req, res) => {
+export const signup_post = async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -63,7 +63,7 @@ module.exports.signup_post = async (req, res) => {
   }
 };
 
-module.exports.login_post = async (req, res) => {
+export const login_post = async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -77,7 +77,7 @@ module.exports.login_post = async (req, res) => {
   }
 };
 
-module.exports.logout_get = (req, res) => {
+export const logout_get = (req, res) => {
   res.cookie("jwt", "", { maxAge: 1 });
   res.redirect("/");
 };
