@@ -20,7 +20,7 @@
     "nodemon": "^2.0.19"
   },
   "scripts": {
-    "start": "NODE_ENV=production node app.js",
+    "start": "node app.js",
     "dev": "NODE_ENV=development node --env-file=.env.development --watch app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "nodemon": "nodemon app.js",
@@ -28,7 +28,7 @@
     "watch-sass": "nodemon -e scss -x \"npm run build-sass\""
   },
   "engines": {
-    "node": "14.17.6"
+    "node": ">=18.0.0"
   },
   "repository": {
     "type": "git",
