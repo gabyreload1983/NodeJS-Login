@@ -1,14 +1,13 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
-const config = require("config");
 
-const jwtPrivateKey = config.get("jwtPrivateKey");
+const JWT = process.env.JWT;
 
 const requireAuth = (req, res, next) => {
   const token = req.cookies.jwt;
 
   if (token) {
-    jwt.verify(token, jwtPrivateKey, (err, decodedToken) => {
+    jwt.verify(token, JWT, (err, decodedToken) => {
       if (err) {
         console.log(err.message);
         res.redirect("/login");
@@ -26,7 +25,7 @@ const checkUser = (req, res, next) => {
   const token = req.cookies.jwt;
 
   if (token) {
-    jwt.verify(token, jwtPrivateKey, async (err, decodedToken) => {
+    jwt.verify(token, JWT, async (err, decodedToken) => {
       if (err) {
         console.log(err.message);
         res.locals.user = null;

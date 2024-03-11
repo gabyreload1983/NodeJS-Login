@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
 const cookieParser = require("cookie-parser");
 const { requireAuth, checkUser } = require("./middleware/auth");
-const config = require("config");
 
 const app = express();
 
@@ -17,15 +16,14 @@ app.set("view engine", "ejs");
 
 // database connection
 
-if (!config.get("db")) {
-  console.log("FATAL ERROR: db is not defined...");
+if (!process.env.MONGO_URL) {
+  console.log("FATAL ERROR: MONGO_URL is not defined...");
   process.exit(1);
 }
 
-const db = config.get("db");
-const dbURI = `mongodb+srv://${db}@cluster0.4hbz9.mongodb.net/node-auth`;
+const MONGO_URL = process.env.MONGO_URL;
 mongoose
-  .connect(dbURI, {
+  .connect(MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -33,8 +31,8 @@ mongoose
   .then((result) => {
     console.log("Connected to mongoDB...");
 
-    if (!config.get("jwtPrivateKey")) {
-      console.log("FATAL ERROR: jwtPrivateKey is not defined...");
+    if (!process.env.JWT) {
+      console.log("FATAL ERROR: JWT is not defined...");
       process.exit(1);
     } else {
       const port = process.env.PORT || 3000;
