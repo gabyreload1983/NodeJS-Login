@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "packageManager": "npm",
+  "builds": [
+    {
+      "src": "/src/app.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "rewrites": [{ "source": "/(.*)", "destination": "/src/$1" }]
+}

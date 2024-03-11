@@ -22,6 +22,7 @@
   },
   "scripts": {
     "start": "node src/app.js",
+    "build": "echo 'No es necesario construir esta aplicación'",
     "dev": "NODE_ENV=development node --env-file=.env.development --watch src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "nodemon": "nodemon app.js",
